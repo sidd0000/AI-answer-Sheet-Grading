@@ -1,0 +1,46 @@
+.student-dashboard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .student-dashboard h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .answer-sheets {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .answer-sheet {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .answer-sheet h3 {
+    margin: 0 0 10px;
+  }
+  
+  .answer-sheet p {
+    margin: 5px 0;
+  }
+  
+  .view-pdf {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .view-pdf:hover {
+    background-color: #0056b3;
+  }
+  
