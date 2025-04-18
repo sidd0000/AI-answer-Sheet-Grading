@@ -1,65 +1,372 @@
 /* src/components/Dashboard.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #5465ff;
+  --primary-light: rgba(84, 101, 255, 0.1);
+  --secondary-color: #788bff;
+  --accent-color: #4f46e5;
+  --dark-color: #1a1e36;
+  --light-color: #f8f9ff;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --border-radius: 12px;
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+
 .dashboard-container {
-    max-width: 800px;
-    margin: auto;
-    padding: 2rem;
-    font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  color: var(--dark-color);
+  position: relative;
+  min-height: 100vh;
+}
+
+.dashboard-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+     background: url('https://img.freepik.com/free-photo/abstract-blue-extruded-voronoi-blocks-background-minimal-light-clean-corporate-wall-3d-geometric-surface-illustration-polygonal-elements-displacement_1217-4578.jpg')no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(10px);
+    z-index: -1;
   }
-  h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
+
+.dashboard-container::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  z-index: -1;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  color: var(--dark-color);
+  font-weight: 700;
+  font-size: 2.5rem;
+  position: relative;
+  padding-bottom: 0.8rem;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border-radius: 2px;
+}
+
+.session-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--light-color);
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--primary-color);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.session-info span {
+  font-size: 1.05rem;
+}
+
+.session-info strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.upload-section {
+  background: var(--light-color);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  transform: translateY(0);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid transparent;
+  animation: slideIn 0.5s ease-out;
+}
+
+.upload-section:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-top-color: var(--primary-color);
+}
+
+.upload-section:nth-child(odd)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, var(--primary-light) 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.upload-section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+  position: relative;
+  font-size: 1.35rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.upload-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.upload-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.upload-form input[type="file"],
+.upload-form input[type="text"] {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e0e6ff;
+  border-radius: var(--border-radius);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.upload-form input[type="file"]:focus,
+.upload-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(84, 101, 255, 0.1);
+}
+
+.upload-form input[type="file"] {
+  padding: 0.65rem 1rem;
+}
+
+.btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(84, 101, 255, 0.25);
+  letter-spacing: 0.3px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(84, 101, 255, 0.35);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ff6b6b, #f03e3e);
+  box-shadow: 0 4px 12px rgba(240, 62, 62, 0.25);
+}
+
+.delete-btn:hover {
+  box-shadow: 0 8px 15px rgba(240, 62, 62, 0.35);
+}
+
+.view-btn {
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.view-btn::after {
+  content: '→';
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.view-btn:hover::after {
+  transform: translateX(4px);
+}
+
+.students-section {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.students-section h2 {
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.students-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.students-table th,
+.students-table td {
+  padding: 1rem;
+  text-align: left;
+}
+
+.students-table th {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.students-table tr {
+  background: var(--light-color);
+  transition: var(--transition);
+}
+
+.students-table tr:nth-child(even) {
+  background: rgba(240, 242, 245, 0.6);
+}
+
+.students-table tr:hover {
+  background: rgba(84, 101, 255, 0.05);
+}
+
+.students-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.small-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  .upload-section {
-    background: #fff;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  to {
+    opacity: 1;
   }
-  .upload-section h2 {
-    margin-bottom: 1rem;
-    color: #555;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  .upload-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .upload-form input[type="file"],
-  .upload-form input[type="text"] {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+}
+
+/* File input custom styling */
+.upload-form input[type="file"]::file-selector-button {
+  border: none;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-right: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+}
+
+.upload-form input[type="file"]::file-selector-button:hover {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+/* Custom animations for elements */
+.upload-section:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+.upload-section:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.students-section {
+  animation-delay: 0.3s;
+}
+
+/* Adding a floating gradient effect */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
   }
-  .btn {
-    background: #FFE08A;
-    border: none;
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.3s;
+  50% {
+    background-position: 100% 50%;
   }
-  .btn:hover {
-    background: #ebb859;
+  100% {
+    background-position: 0% 50%;
   }
-  .view-btn {
-    margin-top: 1rem;
-  }
-  .students-section h2 {
-    margin-bottom: 1rem;
-  }
-  .students-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  .students-table th,
-  .students-table td {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-  }
-  .small-btn {
-    padding: 0.4rem 0.8rem;
-  }
-  
+}
+
+/* No functionality changes to the JSX, only CSS styling */
