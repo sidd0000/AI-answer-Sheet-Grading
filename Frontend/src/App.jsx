@@ -1,18 +1,18 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
-import TeacherDashboard from "./pages/TeacherDashboard/TeacherDashboard";
 import Navbar from "./components/Navbar";
-import StudentDashboard from "./pages/StudentDashboard/StudentDashboard";
+import Dashboard from './components/Dashboard/Dashboard';
+import MarkingSchemePage from './components/Dashboard/MarkingSchemePage';
+import StudentResultPage from './components/Dashboard/StudentResultPage'
 function App() {
   return (
     <Router>
-        
       <Routes>
+        <Route path="/teacher" element={<Dashboard />} />
         <Route path="/" element={<Homepage />} />
-        <Route path="/teacher" element={<TeacherDashboard />} />   
-        <Route path="/student" element={<StudentDashboard />} />   
-
+        <Route path="/marking-scheme" element={<MarkingSchemePage />} />
+        <Route path="/student-result" element={<StudentResultPage />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,65 @@
+/* src/components/Dashboard.css */
+.dashboard-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  .upload-section {
+    background: #fff;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .upload-section h2 {
+    margin-bottom: 1rem;
+    color: #555;
+  }
+  .upload-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .upload-form input[type="file"],
+  .upload-form input[type="text"] {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .btn {
+    background: #FFE08A;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  .btn:hover {
+    background: #ebb859;
+  }
+  .view-btn {
+    margin-top: 1rem;
+  }
+  .students-section h2 {
+    margin-bottom: 1rem;
+  }
+  .students-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .students-table th,
+  .students-table td {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+  }
+  .small-btn {
+    padding: 0.4rem 0.8rem;
+  }
+  
